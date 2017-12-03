@@ -80,6 +80,9 @@ development:
 #
 production:
   <<: *default
-  database: fcnb_web_production
-  username: fcnb_web
-  password: <%= ENV['FCNB_WEB_DATABASE_PASSWORD'] %>
+  database: d2o1416jtqvapk
+  username: mfmtkxaqutctqn
+  port: 5432
+  password: ed6f8ea09a3952707b3cb635dcb3eef3bd663cf201814d1727127d74d3137fbf
+  url: postgres://mfmtkxaqutctqn:ed6f8ea09a3952707b3cb635dcb3eef3bd663cf201814d1727127d74d3137fbf@ec2-107-21-205-25.compute-1.amazonaws.com:5432/d2o1416jtqvapk
+
