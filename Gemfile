@@ -48,4 +48,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # FCNB Application requirements
   gem 'devise', '~> 4.3'
-
+  gem 'adminlte-rails', '~> 1.3', '>= 1.3.3'
