@@ -15,7 +15,9 @@ Devise.setup do |config|
   config.mailer_sender = 'fcnb.devteam@gmail.com'
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  # Author  : MDalisay
+  # Revision: Change config.mailer = 'Devise::Mailer'
+    config.mailer = 'ConfirmationsMailer'
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
