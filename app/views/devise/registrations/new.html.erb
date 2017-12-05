@@ -21,6 +21,63 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :family_name %><br />
+    <%= f.text_field :family_name, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :given_name %><br />
+    <%= f.text_field :given_name, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :middle_name %><br />
+    <%= f.text_field :middle_name, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :port_of_entry %><br />
+    <%= f.text_field :port_of_entry, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :pr_date %><br />
+    <%= f.date_field :pr_date, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city, autofocus: true%>
+  </div>
+  <div class="field">
+    <%= f.label :province %><br />
+    <%= f.text_field :province, autofocus: true%>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country, autofocus: true%>
+  </div>
+  <div class="field">
+    <%= f.label :mobile_phone %><br />
+    <%= f.text_field :mobile_phone, autofocus: true%>
+  </div>
+  <div class="field">
+    <%= f.label :home_phone %><br />
+    <%= f.text_field :home_phone, autofocus: true%>
+  </div>
+
+
+  
+
+
+
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

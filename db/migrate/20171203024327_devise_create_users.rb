@@ -2,8 +2,19 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string   :email,              null: false, default: ""
+      t.string   :family_name,        null: false, default: ""
+      t.string   :given_name,         null: false, default: ""
+      t.string   :middle_name,        default: ""
+      t.string   :port_of_entry,      null: false, default: ""
+      t.date     :pr_date
+      t.string   :encrypted_password, null: false, default: ""
+      t.string   :address,            null: false, default: ""
+      t.string   :city,               null: false, default: ""
+      t.string   :province,           null: false, default: ""
+      t.string   :country,            null: false, default: ""
+      t.string   :mobile_phone,       default: ""
+      t.string   :home_phone,         default: ""   
 
       ## Recoverable
       t.string   :reset_password_token
@@ -31,12 +42,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
        t.datetime :locked_at
 
 
-      t.timestamps null: false
+      # t.timestamps null: false
     end
 
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
-     add_index :users, :confirmation_token,   unique: true
-     add_index :users, :unlock_token,         unique: true
+    add_index :users, :confirmation_token,   unique: true
+    add_index :users, :unlock_token,         unique: true
   end
 end

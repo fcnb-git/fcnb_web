@@ -17,7 +17,18 @@ ActiveRecord::Schema.define(version: 20171203024327) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
+    t.string "family_name", default: "", null: false
+    t.string "given_name", default: "", null: false
+    t.string "middle_name", default: ""
+    t.string "port_of_entry", default: "", null: false
+    t.date "pr_date"
     t.string "encrypted_password", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "city", default: "", null: false
+    t.string "province", default: "", null: false
+    t.string "country", default: "", null: false
+    t.string "mobile_phone", default: ""
+    t.string "home_phone", default: ""
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -33,8 +44,6 @@ ActiveRecord::Schema.define(version: 20171203024327) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
