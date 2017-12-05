@@ -34,7 +34,9 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <%if alert%>
+    <p class="login-box-msg"><%= alert %></p>
+    <%end%>
 	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 	  <div class="form-group has-feedback">
 	    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
@@ -63,8 +65,6 @@
       </div>
 	<% end %>
 	
-	<%= render "devise/shared/links" %>
-
     <div class="social-auth-links text-center">
       <p>- OR -</p>
       <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
@@ -73,9 +73,7 @@
         LinkedIn</a>
     </div>
     <!-- /.social-auth-links -->
-
-    <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a>
+	<%= render "devise/shared/links" %>
 
   </div>
   <!-- /.login-box-body -->
