@@ -27,5 +27,7 @@ module FcnbWeb
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    # Devise gem setting
+      config.assets.initialize_on_precompile = false
   end
 end

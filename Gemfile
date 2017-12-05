@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+   gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -48,4 +48,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # FCNB Application requirements
   gem 'devise', '~> 4.3'
-  gem 'adminlte-rails', '~> 1.3', '>= 1.3.3'
+  gem 'bootstrap', '~> 4.0.0.beta2.1'
+  gem 'bootstrap-sass'
+  gem 'jquery-rails'
+  gem 'font-awesome-sass'
+  gem 'adminlte2-rails', '~> 0.0.6' 
+  
+  
