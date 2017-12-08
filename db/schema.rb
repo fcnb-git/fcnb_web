@@ -10,10 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171203024327) do
+ActiveRecord::Schema.define(version: 20171207071036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "organizations", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.string "addressline1"
+    t.string "addressline2"
+    t.string "addressline3"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_certifications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "description"
+    t.date "date_issued"
+    t.date "date_expiry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_certifications_on_user_id"
+  end
+
+  create_table "user_educations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "education_type"
+    t.string "institution"
+    t.string "degree"
+    t.string "program"
+    t.string "specialization"
+    t.date "date_started"
+    t.date "date_completed"
+    t.string "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_educations_on_user_id"
+  end
+
+  create_table "user_trainings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "description"
+    t.date "date_started"
+    t.date "date_completed"
+    t.string "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_trainings_on_user_id"
+  end
+
+  create_table "user_work_experiences", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "employer_name"
+    t.string "location"
+    t.string "position_title"
+    t.date "date_to"
+    t.date "date_from"
+    t.string "employment_type"
+    t.text "duties"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_work_experiences_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,8 +87,13 @@ ActiveRecord::Schema.define(version: 20171203024327) do
     t.string "city", default: "", null: false
     t.string "province", default: "", null: false
     t.string "country", default: "", null: false
+    t.string "nationality", default: "", null: false
+    t.string "gender", default: "", null: false
+    t.date "birthdate"
     t.string "mobile_phone", default: ""
     t.string "home_phone", default: ""
+    t.string "linkedin", default: ""
+    t.string "facebook", default: ""
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

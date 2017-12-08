@@ -13,8 +13,13 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string   :city,               null: false, default: ""
       t.string   :province,           null: false, default: ""
       t.string   :country,            null: false, default: ""
+      t.string   :nationality,        null: false, default: ""
+      t.string   :gender,             null: false, default: ""
+      t.date     :birthdate
       t.string   :mobile_phone,       default: ""
-      t.string   :home_phone,         default: ""   
+      t.string   :home_phone,         default: ""
+      t.string   :linkedin,           default: ""
+      t.string   :facebook,           default: ""   
 
       ## Recoverable
       t.string   :reset_password_token

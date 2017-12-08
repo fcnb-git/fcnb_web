@@ -117,36 +117,29 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
+      	<li class="header">DASHBOARD</li>
+        <li>
+          	 <%= link_to '<i class="fa  fa-binoculars"></i> <span>Preview Resume</span>'.html_safe, edit_user_registration_path %>
+        </li>      	
+      	
         <li class="header">MAIN NAVIGATION</li>
-        
-        <li>
+        <li class="treeview">
           <a href="#">
-            <i class="fa  fa-user"></i> <span>Personal Information</span>
+            <i class="fa fa-list"></i>
+            <span>Manage Details</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
-        </li>
-        
-        
-        <li>
-          <a href="#">
-            <i class="fa fa-mortar-board"></i> <span>Education</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-user-md"></i> <span>Work Experience</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-black-tie"></i> <span>Membership</span>
-          </a>
-        </li>
-        
-        <li>
-        	<a href="#">
-        		<i class="fa fa-book"></i> <span>Documentation</span>
-        	</a>
-        </li>
+          <ul class="treeview-menu">
+            <li><%= link_to '<i class="fa  fa-user"></i> <span>Personal Information</span>'.html_safe, edit_user_registration_path %></li>
+            <li><%= link_to '<i class="fa  fa-mortar-board"></i> <span>Education</span>'.html_safe, "/education" %></li>
+            <li><%= link_to '<i class="fa  fa-user-md"></i> <span>Work Experiences</span>'.html_safe, "/work_experiences" %></li>
+            <li><%= link_to '<i class="fa  fa-black-tie"></i> <span>Certifications/Licenses</span>'.html_safe, "/certifications" %></li>
+            <li><%= link_to '<i class="fa  fa-book"></i> <span>Trainings</span>'.html_safe, "/trainings" %></li>
+          </ul>
+        </li>      	
+                
       </ul>
     </section>
     <!-- /.sidebar -->
