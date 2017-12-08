@@ -80,9 +80,10 @@ development:
 #
 production:
   <<: *default
-  database: d2o1416jtqvapk
-  username: mfmtkxaqutctqn
+  database: d9lfbbrdv4165q
+  host: ec2-54-83-54-224.compute-1.amazonaws.com
+  username: dqwwlpocdfysvn
   port: 5432
-  password: ed6f8ea09a3952707b3cb635dcb3eef3bd663cf201814d1727127d74d3137fbf
-  url: postgres://mfmtkxaqutctqn:ed6f8ea09a3952707b3cb635dcb3eef3bd663cf201814d1727127d74d3137fbf@ec2-107-21-205-25.compute-1.amazonaws.com:5432/d2o1416jtqvapk
+  password: a6ce100b873130365b1bc05e4ddf7b18ec8a91758ea1c03ce623efa2fdf59408
+  url: postgres://dqwwlpocdfysvn:a6ce100b873130365b1bc05e4ddf7b18ec8a91758ea1c03ce623efa2fdf59408@ec2-54-83-54-224.compute-1.amazonaws.com:5432/d9lfbbrdv4165q
 
