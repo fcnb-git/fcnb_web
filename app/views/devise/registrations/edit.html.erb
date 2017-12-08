@@ -168,20 +168,20 @@
 		          <div class="nav-tabs-custom">
 		            	<div class="tab-content">
 		            		<div class="active tab-pane" id="currentPassword">
-						         <div class="form-group has-feedback">
-						                    <label for="inputPassword" class="col-sm-3 control-label">Password</label>
-											<div class="col-sm-9">
-											    <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Current password"%>
-											    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-											    <i>(We need your current password to apply your changes)</i>
-											</div>
-						         </div>		            			
-						         <div class="form-group has-feedback">
-									<div class="pull-right">
-											<%= f.submit "Update", class: "btn btn-danger"%>
+						        <div class="form-group has-feedback">
+						             <label for="inputPassword" class="col-sm-3 control-label">Password</label>
+									 <div class="col-sm-9">
+										<%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Current password"%>
+										<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+										<i>(We need your current password to apply your changes)</i>
+									 </div>
+								</div>
+								<div class="form-group has-feedback">
+									<div style="margin-left: 150px;">
+										<%= f.submit "Update", class: "btn btn-danger"%>
 									</div>
-						         </div>
-    
+					                  
+					            </div>	
 		            		</div>
 		            	</div>
 		           </div>
