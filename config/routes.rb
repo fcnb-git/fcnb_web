@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   root "home#index"
   get 'home/index'
   
-  
   get "personal_information",  to: "home#personal_information"
   get "education",             to: "home#education"
   get "work_experiences",      to: "home#work_experiences"

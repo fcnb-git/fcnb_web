@@ -1,57 +1,76 @@
-<%= form_with(model: user_education, local: true) do |form| %>
-  <% if user_education.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user_education.errors.count, "error") %> prohibited this user_education from being saved:</h2>
+<%= form_with(model: user_education, local: true,class: "form-horizontal") do |f| %>
+	<div class="col-sm-6">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#add_education" data-toggle="tab">Add Education</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="active tab-pane" id="add_education">
 
-      <ul>
-      <% user_education.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Education Type</label>
+					<div class="col-sm-9">
+						<%= f.select(:education_type, ["Post-Graduate","Tertiary Education",'Secondary Education','Elementary Education'],{},{class:"form-control"})%>
+					</div>				                    
+				</div>
 
-  <div class="field">
-    <%= form.label :education_type %>
-    <%= form.text_field :education_type, id: :user_education_education_type %>
-  </div>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Institution</label>
+					<div class="col-sm-9">
+						<%= f.text_field :institution, autofocus: true, class: "form-control", placeholder: "Name of institution" %>
+						<span class="fa fa-institution form-control-feedback"></span>
+					</div>				                    
+				</div>
 
-  <div class="field">
-    <%= form.label :institution %>
-    <%= form.text_field :institution, id: :user_education_institution %>
-  </div>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Degree</label>
+					<div class="col-sm-9">
+						<%= f.text_field :degree, autofocus: true, class: "form-control", placeholder: "Degree" %>
+						<span class="fa fa-graduation-cap form-control-feedback"></span>
+					</div>				                    
+				</div>
 
-  <div class="field">
-    <%= form.label :degree %>
-    <%= form.text_field :degree, id: :user_education_degree %>
-  </div>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Program</label>
+					<div class="col-sm-9">
+						<%= f.text_field :program, autofocus: true, class: "form-control", placeholder: "e.g. Engineering, General Education, etc." %>
+					</div>				                    
+				</div>
 
-  <div class="field">
-    <%= form.label :program %>
-    <%= form.text_field :program, id: :user_education_program %>
-  </div>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Specialization</label>
+					<div class="col-sm-9">
+						<%= f.text_field :specialization, autofocus: true, class: "form-control", placeholder: "Specialization" %>
+					</div>				                    
+				</div>
+				
+				<div class="form-group has-feedback">
+					<label for="inputPRDate" class="col-sm-3 control-label">Date Started</label>
+						<div class="col-sm-9">
+							<%= f.date_field :date_started, autofocus: true, class: "form-control" %>
+						</div>				                    
+				</div>
+							
+				<div class="form-group has-feedback">
+					<label for="inputPRDate" class="col-sm-3 control-label">Date Completed</label>
+						<div class="col-sm-9">
+							<%= f.date_field :date_completed, autofocus: true, class: "form-control" %>
+						</div>				                    
+				</div>	
 
-  <div class="field">
-    <%= form.label :specialization %>
-    <%= form.text_field :specialization, id: :user_education_specialization %>
-  </div>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Remarks</label>
+					<div class="col-sm-9">
+						<%= f.text_field :remarks, autofocus: true, class: "form-control", placeholder: "Remarks" %>
+					</div>				                    
+				</div>			
+				<div class="form-group has-feedback">
+					<div style="margin-left: 150px;">
+						<%= f.submit "Save", class: "btn btn-danger"%>
+					</div>
+				</div>																			
 
-  <div class="field">
-    <%= form.label :date_started %>
-    <%= form.date_select :date_started, id: :user_education_date_started %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date_completed %>
-    <%= form.date_select :date_completed, id: :user_education_date_completed %>
-  </div>
-
-  <div class="field">
-    <%= form.label :remarks %>
-    <%= form.text_field :remarks, id: :user_education_remarks %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+              </div>
+            </div>
+   </div>
+<%end%>   

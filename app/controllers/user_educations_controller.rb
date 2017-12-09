@@ -1,20 +1,26 @@
 class UserEducationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user_education, only: [:show, :edit, :update, :destroy]
-
+  layout "home", only: [:new, :create,:destroy]
+  layout "home", only: [:edit, :update]  
   # GET /user_educations
   # GET /user_educations.json
+  
   def index
-    @user_educations = UserEducation.all
+    @user_educations = UserEducation.all.order("date_completed DESC")
+    render layout: 'home'
   end
 
   # GET /user_educations/1
   # GET /user_educations/1.json
   def show
+    puts "SHOW DEKIMS"
   end
 
   # GET /user_educations/new
   def new
     @user_education = UserEducation.new
+    render layout: 'home'
   end
 
   # GET /user_educations/1/edit
@@ -24,11 +30,12 @@ class UserEducationsController < ApplicationController
   # POST /user_educations
   # POST /user_educations.json
   def create
-    @user_education = UserEducation.new(user_education_params)
+    @current_user   = current_user
+    @user_education = @current_user.user_educations.new(user_education_params)
 
     respond_to do |format|
       if @user_education.save
-        format.html { redirect_to @user_education, notice: 'User education was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'User education was successfully created.' }
         format.json { render :show, status: :created, location: @user_education }
       else
         format.html { render :new }
@@ -42,7 +49,7 @@ class UserEducationsController < ApplicationController
   def update
     respond_to do |format|
       if @user_education.update(user_education_params)
-        format.html { redirect_to @user_education, notice: 'User education was successfully updated.' }
+        format.html { redirect_to action: "index", notice: 'User education was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_education }
       else
         format.html { render :edit }
@@ -54,6 +61,7 @@ class UserEducationsController < ApplicationController
   # DELETE /user_educations/1
   # DELETE /user_educations/1.json
   def destroy
+    puts "DESTROY DEKIMS"
     @user_education.destroy
     respond_to do |format|
       format.html { redirect_to user_educations_url, notice: 'User education was successfully destroyed.' }
