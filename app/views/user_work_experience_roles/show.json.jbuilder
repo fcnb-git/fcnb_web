@@ -1,0 +1,1 @@
+json.partial! "user_work_experience_roles/user_work_experience_role", user_work_experience_role: @user_work_experience_role

@@ -1,0 +1,2 @@
+module SkillInventoriesHelper
+end

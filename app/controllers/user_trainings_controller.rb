@@ -62,7 +62,7 @@ class UserTrainingsController < ApplicationController
   def destroy
     @user_training.destroy
     respond_to do |format|
-      format.html { redirect_to user_trainings_url, notice: 'User training was successfully destroyed.' }
+      format.html { redirect_to user_trainings_url, notice: 'User training was successfully deleted.' }
       format.json { head :no_content }
     end
   end

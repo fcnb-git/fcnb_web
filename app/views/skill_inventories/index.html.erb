@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Skill Inventories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Specific skill</th>
+      <th>Remarks</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @skill_inventories.each do |skill_inventory| %>
+      <tr>
+        <td><%= skill_inventory.category %></td>
+        <td><%= skill_inventory.specific_skill %></td>
+        <td><%= skill_inventory.remarks %></td>
+        <td><%= link_to 'Show', skill_inventory %></td>
+        <td><%= link_to 'Edit', edit_skill_inventory_path(skill_inventory) %></td>
+        <td><%= link_to 'Destroy', skill_inventory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Skill Inventory', new_skill_inventory_path %>

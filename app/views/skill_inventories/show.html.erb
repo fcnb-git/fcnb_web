@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @skill_inventory.category %>
+</p>
+
+<p>
+  <strong>Specific skill:</strong>
+  <%= @skill_inventory.specific_skill %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @skill_inventory.remarks %>
+</p>
+
+<%= link_to 'Edit', edit_skill_inventory_path(@skill_inventory) %> |
+<%= link_to 'Back', skill_inventories_path %>

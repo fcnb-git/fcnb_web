@@ -5,6 +5,7 @@ class CreateUserCertifications < ActiveRecord::Migration[5.1]
       t.string :description
       t.date :date_issued
       t.date :date_expiry
+      t.string :note
 
       t.timestamps
     end

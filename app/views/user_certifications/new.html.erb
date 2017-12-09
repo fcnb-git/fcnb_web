@@ -1,0 +1,9 @@
+<%content_for :tab_title do %>
+	<li class="active"><a href="#add_certification" data-toggle="tab">New Certification / License</a></li>
+<%end%>
+
+<%content_for :content_page do%>
+	<%= render 'form', user_certification: @user_certification %>
+	<%= link_to 'Back', user_certifications_path %>
+<%end%>
+

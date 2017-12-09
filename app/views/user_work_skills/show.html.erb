@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Total experience:</strong>
+  <%= @user_work_skill.total_experience %>
+</p>
+
+<p>
+  <strong>Last time used:</strong>
+  <%= @user_work_skill.last_time_used %>
+</p>
+
+<p>
+  <strong>Last time used duration years:</strong>
+  <%= @user_work_skill.last_time_used_duration_years %>
+</p>
+
+<p>
+  <strong>Refresher:</strong>
+  <%= @user_work_skill.refresher %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @user_work_skill.notes %>
+</p>
+
+<%= link_to 'Edit', edit_user_work_skill_path(@user_work_skill) %> |
+<%= link_to 'Back', user_work_skills_path %>

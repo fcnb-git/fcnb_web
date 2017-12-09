@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @user_work_experience.company_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @user_work_experience.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @user_work_experience.city %>
+</p>
+
+<p>
+  <strong>Province:</strong>
+  <%= @user_work_experience.province %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @user_work_experience.country %>
+</p>
+
+<p>
+  <strong>Industry:</strong>
+  <%= @user_work_experience.industry %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @user_work_experience.position %>
+</p>
+
+<p>
+  <strong>Date from:</strong>
+  <%= @user_work_experience.date_from %>
+</p>
+
+<p>
+  <strong>Date to:</strong>
+  <%= @user_work_experience.date_to %>
+</p>
+
+<%= link_to 'Edit', edit_user_work_experience_path(@user_work_experience) %> |
+<%= link_to 'Back', user_work_experiences_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user_work_experience_role.role %>
+</p>
+
+<p>
+  <strong>Date from:</strong>
+  <%= @user_work_experience_role.date_from %>
+</p>
+
+<p>
+  <strong>Date to:</strong>
+  <%= @user_work_experience_role.date_to %>
+</p>
+
+<p>
+  <strong>Project name:</strong>
+  <%= @user_work_experience_role.project_name %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @user_work_experience_role.notes %>
+</p>
+
+<%= link_to 'Edit', edit_user_work_experience_role_path(@user_work_experience_role) %> |
+<%= link_to 'Back', user_work_experience_roles_path %>

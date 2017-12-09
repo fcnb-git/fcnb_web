@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @user_certification.description %>
+</p>
+
+<p>
+  <strong>Date issued:</strong>
+  <%= @user_certification.date_issued %>
+</p>
+
+<p>
+  <strong>Date expiry:</strong>
+  <%= @user_certification.date_expiry %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @user_certification.note %>
+</p>
+
+<%= link_to 'Edit', edit_user_certification_path(@user_certification) %> |
+<%= link_to 'Back', user_certifications_path %>

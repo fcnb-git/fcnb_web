@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171209121829) do
+ActiveRecord::Schema.define(version: 20171209161823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,20 @@ ActiveRecord::Schema.define(version: 20171209121829) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "skill_inventories", force: :cascade do |t|
+    t.string "category"
+    t.string "specific_skill"
+    t.string "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_certifications", force: :cascade do |t|
     t.bigint "user_id"
     t.string "description"
     t.date "date_issued"
     t.date "date_expiry"
+    t.string "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_certifications_on_user_id"
@@ -61,18 +70,46 @@ ActiveRecord::Schema.define(version: 20171209121829) do
     t.index ["user_id"], name: "index_user_trainings_on_user_id"
   end
 
+  create_table "user_work_experience_roles", force: :cascade do |t|
+    t.bigint "user_work_experience_id"
+    t.string "role"
+    t.date "date_from"
+    t.date "date_to"
+    t.string "project_name"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_work_experience_id"], name: "index_user_work_experience_roles_on_user_work_experience_id"
+  end
+
   create_table "user_work_experiences", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "employer_name"
-    t.string "location"
-    t.string "position_title"
-    t.date "date_to"
+    t.string "company_name"
+    t.string "address"
+    t.string "city"
+    t.string "province"
+    t.string "country"
+    t.string "industry"
+    t.string "position"
     t.date "date_from"
-    t.string "employment_type"
-    t.text "duties"
+    t.date "date_to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_work_experiences_on_user_id"
+  end
+
+  create_table "user_work_skills", force: :cascade do |t|
+    t.bigint "skill_inventory_id"
+    t.bigint "user_work_experience_role_id"
+    t.integer "total_experience"
+    t.date "last_time_used"
+    t.integer "last_time_used_duration_years"
+    t.string "refresher"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_inventory_id"], name: "index_user_work_skills_on_skill_inventory_id"
+    t.index ["user_work_experience_role_id"], name: "index_user_work_skills_on_user_work_experience_role_id"
   end
 
   create_table "users", force: :cascade do |t|

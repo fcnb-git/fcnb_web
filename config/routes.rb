@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :user_work_skills
+  resources :skill_inventories
+  resources :user_work_experience_roles
+  resources :user_work_experiences
+  resources :user_certifications
   resources :user_trainings
   resources :organizations
   resources :user_educations

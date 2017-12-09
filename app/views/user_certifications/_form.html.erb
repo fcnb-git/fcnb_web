@@ -1,0 +1,64 @@
+<%= form_with(model: user_certification, local: true,class: "form-horizontal") do |form| %>
+	<div class="col-sm-6">
+		  <% if user_certification.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(user_certification.errors.count, "error") %> prohibited this user_certification from being saved:</h2>
+		
+		      <ul>
+		      <% user_certification.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+		
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <%=yield :tab_title%>	
+            </ul>
+            <div class="tab-content">
+              <div class="active tab-pane" id="add_training">
+
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Certification/License</label>
+					<div class="col-sm-9">
+						<%= form.text_field :description, autofocus: true, class: "form-control", placeholder: "Certification / License" %>
+						<span class="fa fa-certificate form-control-feedback"></span>
+					</div>				                    
+				</div>
+
+				<div class="form-group has-feedback">
+					<label for="inputPRDate" class="col-sm-3 control-label">Date issued</label>
+						<div class="col-sm-9">
+							<%= form.date_field :date_issued, autofocus: true, class: "form-control" %>
+						</div>				                    
+				</div>	
+
+				<div class="form-group has-feedback">
+					<label for="inputPRDate" class="col-sm-3 control-label">Expiry Date</label>
+						<div class="col-sm-9">
+							<%= form.date_field :date_expiry, autofocus: true, class: "form-control" %>
+						</div>				                    
+				</div>
+				
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Remarks</label>
+					<div class="col-sm-9">
+						<%= form.select(:note, ["Active","Expired"],{},{class:"form-control"})%>
+					</div>				                    
+				</div>
+
+
+		
+				<div class="form-group has-feedback">
+					<div style="margin-left: 150px;">
+						<%= form.submit "Save", class: "btn btn-danger"%>
+					</div>
+				</div>																			
+
+              </div>
+            </div>
+   </div>
+
+
+<% end %>
