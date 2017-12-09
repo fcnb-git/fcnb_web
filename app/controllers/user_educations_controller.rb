@@ -14,7 +14,6 @@ class UserEducationsController < ApplicationController
   # GET /user_educations/1
   # GET /user_educations/1.json
   def show
-    puts "SHOW DEKIMS"
   end
 
   # GET /user_educations/new
@@ -61,7 +60,6 @@ class UserEducationsController < ApplicationController
   # DELETE /user_educations/1
   # DELETE /user_educations/1.json
   def destroy
-    puts "DESTROY DEKIMS"
     @user_education.destroy
     respond_to do |format|
       format.html { redirect_to user_educations_url, notice: 'User education was successfully destroyed.' }
