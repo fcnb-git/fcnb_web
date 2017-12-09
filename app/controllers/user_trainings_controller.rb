@@ -7,7 +7,7 @@ class UserTrainingsController < ApplicationController
   # GET /user_trainings
   # GET /user_trainings.json
   def index
-    @user_trainings = UserTraining.all.order("date_completed DESC")
+    @user_trainings = UserTraining.where(user_id: current_user.id).order("date_completed DESC")
     render layout: 'home'
   end
 

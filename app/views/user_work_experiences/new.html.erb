@@ -1,5 +1,11 @@
-<h1>New User Work Experience</h1>
+<%content_for :tab_title do %>
+	<li class="active"><a href="#add_work_experience" data-toggle="tab">New Work Experience</a></li>
+<%end%>
 
-<%= render 'form', user_work_experience: @user_work_experience %>
+<%content_for :content_page do%>
+	<%= render 'form', user_work_experience: @user_work_experience %>
+	<%= link_to 'Back', user_work_experiences_path %>
+<%end%>
 
-<%= link_to 'Back', user_work_experiences_path %>
+
+

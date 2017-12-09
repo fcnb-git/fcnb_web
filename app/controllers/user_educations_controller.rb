@@ -7,7 +7,7 @@ class UserEducationsController < ApplicationController
   # GET /user_educations.json
   
   def index
-    @user_educations = UserEducation.all.order("date_completed DESC")
+    @user_educations = UserEducation.where(user_id: current_user.id).order("date_completed DESC")
     render layout: 'home'
   end
 

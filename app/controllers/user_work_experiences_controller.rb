@@ -1,10 +1,15 @@
 class UserWorkExperiencesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user_work_experience, only: [:show, :edit, :update, :destroy]
+  layout "home", only: [:new, :create,:destroy]
+  layout "home", only: [:edit, :update]  
+  
 
   # GET /user_work_experiences
   # GET /user_work_experiences.json
   def index
-    @user_work_experiences = UserWorkExperience.all
+    @user_work_experiences = UserWorkExperience.where(user_id: current_user.id).order("date_to DESC")
+    render layout: 'home'
   end
 
   # GET /user_work_experiences/1
@@ -15,6 +20,7 @@ class UserWorkExperiencesController < ApplicationController
   # GET /user_work_experiences/new
   def new
     @user_work_experience = UserWorkExperience.new
+    render layout: 'home'
   end
 
   # GET /user_work_experiences/1/edit
@@ -24,11 +30,12 @@ class UserWorkExperiencesController < ApplicationController
   # POST /user_work_experiences
   # POST /user_work_experiences.json
   def create
-    @user_work_experience = UserWorkExperience.new(user_work_experience_params)
+    @current_user = current_user
+    @user_work_experience = @current_user.user_work_experiences.new(user_work_experience_params)
 
     respond_to do |format|
       if @user_work_experience.save
-        format.html { redirect_to @user_work_experience, notice: 'User work experience was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'User work experience was successfully created.' }
         format.json { render :show, status: :created, location: @user_work_experience }
       else
         format.html { render :new }
@@ -42,7 +49,7 @@ class UserWorkExperiencesController < ApplicationController
   def update
     respond_to do |format|
       if @user_work_experience.update(user_work_experience_params)
-        format.html { redirect_to @user_work_experience, notice: 'User work experience was successfully updated.' }
+        format.html { redirect_to action: "index", notice: 'User work experience was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_work_experience }
       else
         format.html { render :edit }

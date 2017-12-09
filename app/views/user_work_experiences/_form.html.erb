@@ -1,62 +1,101 @@
-<%= form_with(model: user_work_experience, local: true) do |form| %>
-  <% if user_work_experience.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user_work_experience.errors.count, "error") %> prohibited this user_work_experience from being saved:</h2>
+<%= form_with(model: user_work_experience, local: true,class: "form-horizontal") do |form| %>
+	<div class="col-sm-6">
+		  <% if user_work_experience.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(user_work_experience.errors.count, "error") %> prohibited this user_work_experience from being saved:</h2>
+		
+		      <ul>
+		      <% user_work_experience.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+		
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <%=yield :tab_title%>	
+            </ul>
+            <div class="tab-content">
+              <div class="active tab-pane" id="add_training">
 
-      <ul>
-      <% user_work_experience.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Company Name</label>
+					<div class="col-sm-9">
+						<%= form.text_field :company_name, autofocus: true, class: "form-control", placeholder: "Company Name" %>
+						<span class="fa fa-institution form-control-feedback"></span>
+					</div>				                    
+				</div>
 
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name, id: :user_work_experience_company_name %>
-  </div>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Address</label>
+					<div class="col-sm-9">
+						<%= form.text_field :address, autofocus: true, class: "form-control", placeholder: "Address" %>
+						<span class="fa fa-map-pin form-control-feedback"></span>
+					</div>				                    
+				</div>
+				
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">City</label>
+					<div class="col-sm-9">
+						<%= form.text_field :city, autofocus: true, class: "form-control", placeholder: "City" %>
+						<span class="fa fa-map-marker form-control-feedback"></span>
+					</div>				                    
+				</div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address, id: :user_work_experience_address %>
-  </div>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Province</label>
+					<div class="col-sm-9">
+						<%= form.text_field :province, autofocus: true, class: "form-control", placeholder: "Province" %>
+					</div>				                    
+				</div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city, id: :user_work_experience_city %>
-  </div>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Country</label>
+					<div class="col-sm-9">
+						<%= form.text_field :country, autofocus: true, class: "form-control", placeholder: "Country" %>
+					</div>				                    
+				</div>
 
-  <div class="field">
-    <%= form.label :province %>
-    <%= form.text_field :province, id: :user_work_experience_province %>
-  </div>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Industry type</label>
+					<div class="col-sm-9">
+						<%= form.text_field :industry, autofocus: true, class: "form-control", placeholder: "Industry type" %>
+						<span class="fa fa-institution form-control-feedback"></span>
+					</div>				                    
+				</div>
 
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country, id: :user_work_experience_country %>
-  </div>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Position</label>
+					<div class="col-sm-9">
+						<%= form.text_field :position, autofocus: true, class: "form-control", placeholder: "Position" %>
+					</div>				                    
+				</div>
+								
+				<div class="form-group has-feedback">
+					<label for="inputPRDate" class="col-sm-3 control-label">Date Started</label>
+						<div class="col-sm-9">
+							<%= form.date_field :date_from, autofocus: true, class: "form-control" %>
+						</div>				                    
+				</div>	
 
-  <div class="field">
-    <%= form.label :industry %>
-    <%= form.text_field :industry, id: :user_work_experience_industry %>
-  </div>
+				<div class="form-group has-feedback">
+					<label for="inputPRDate" class="col-sm-3 control-label">Date Ended</label>
+						<div class="col-sm-9">
+							<%= form.date_field :date_to, autofocus: true, class: "form-control" %>
+							<span class="fa fa-calendar form-control-feedback"></span>
+						</div>				                    
+				</div>
+				
+				<div class="form-group has-feedback">
+					<div style="margin-left: 150px;">
+						<%= form.submit "Save", class: "btn btn-danger"%>
+					</div>
+				</div>																			
 
-  <div class="field">
-    <%= form.label :position %>
-    <%= form.text_field :position, id: :user_work_experience_position %>
-  </div>
+              </div>
+            </div>
+   </div>
 
-  <div class="field">
-    <%= form.label :date_from %>
-    <%= form.date_select :date_from, id: :user_work_experience_date_from %>
-  </div>
 
-  <div class="field">
-    <%= form.label :date_to %>
-    <%= form.date_select :date_to, id: :user_work_experience_date_to %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

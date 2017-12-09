@@ -7,7 +7,7 @@ class UserCertificationsController < ApplicationController
   # GET /user_certifications
   # GET /user_certifications.json
   def index
-    @user_certifications = UserCertification.all.order("date_issued DESC")
+    @user_certifications = UserCertification.where(user_id: current_user.id).order("date_issued DESC")
     render layout: 'home'
   end
 

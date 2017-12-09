@@ -1,6 +1,9 @@
-<h1>Editing User Work Experience</h1>
+<%content_for :tab_title do %>
+	<li class="active"><a href="#add_work_experience" data-toggle="tab">Edit Work Experience</a></li>
+<%end%>
+<%content_for :content_page do%>
+	<%= render 'form', user_work_experience: @user_work_experience %>
+	<%= link_to 'Back', user_work_experiences_path %>
+<%end%>
 
-<%= render 'form', user_work_experience: @user_work_experience %>
 
-<%= link_to 'Show', @user_work_experience %> |
-<%= link_to 'Back', user_work_experiences_path %>
