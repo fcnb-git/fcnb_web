@@ -80,10 +80,10 @@ development:
 #
 production:
   <<: *default
-  database: d9lfbbrdv4165q
-  host: ec2-54-83-54-224.compute-1.amazonaws.com
-  username: dqwwlpocdfysvn
+  database: dbj92vrnega2cm
+  host: ec2-107-22-211-182.compute-1.amazonaws.com
+  username: kqidljbhnhmwrp
   port: 5432
-  password: a6ce100b873130365b1bc05e4ddf7b18ec8a91758ea1c03ce623efa2fdf59408
-  url: postgres://dqwwlpocdfysvn:a6ce100b873130365b1bc05e4ddf7b18ec8a91758ea1c03ce623efa2fdf59408@ec2-54-83-54-224.compute-1.amazonaws.com:5432/d9lfbbrdv4165q
+  password: f00680adaf2bdf3ca6a7281c315581d464e66f7f44a637e343fbbe60d1d206af
+  url: postgres://kqidljbhnhmwrp:f00680adaf2bdf3ca6a7281c315581d464e66f7f44a637e343fbbe60d1d206af@ec2-107-22-211-182.compute-1.amazonaws.com:5432/dbj92vrnega2cm
 
