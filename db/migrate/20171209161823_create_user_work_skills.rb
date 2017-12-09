@@ -7,7 +7,7 @@ class CreateUserWorkSkills < ActiveRecord::Migration[5.1]
       t.date :last_time_used
       t.integer :last_time_used_duration_years
       t.string :refresher
-      t.text :notes
+      t.string :notes
 
       t.timestamps
     end

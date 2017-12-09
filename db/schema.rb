@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20171209161823) do
     t.date "date_from"
     t.date "date_to"
     t.string "project_name"
-    t.text "notes"
+    t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_work_experience_id"], name: "index_user_work_experience_roles_on_user_work_experience_id"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20171209161823) do
     t.date "last_time_used"
     t.integer "last_time_used_duration_years"
     t.string "refresher"
-    t.text "notes"
+    t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["skill_inventory_id"], name: "index_user_work_skills_on_skill_inventory_id"

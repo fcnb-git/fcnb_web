@@ -6,7 +6,7 @@ class CreateUserWorkExperienceRoles < ActiveRecord::Migration[5.1]
       t.date :date_from
       t.date :date_to
       t.string :project_name
-      t.text :notes
+      t.string :notes
 
       t.timestamps
     end
