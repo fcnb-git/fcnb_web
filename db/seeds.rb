@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+    
+Lookup.create(
+  [
+    {category:"gender", dropdown_value: "Male", order_value: 1},
+    {category:"gender", dropdown_value: "Female", order_value: 1}
+  ]
+)
