@@ -1,0 +1,331 @@
+<%content_for :content_page do%>
+<div class="col-md-3">
+
+	<!-- Profile Image -->
+	<div class="box box-primary">
+		<div class="box-body box-profile">
+			<img class="profile-user-img img-responsive img-circle" src="/images/user_avatar.png" alt="User profile picture">
+
+			<h3 class="profile-username text-center"><%= "#{current_user.given_name} #{current_user.family_name}"%></h3>
+
+			<p class="text-muted text-center">
+				<%= @user_work_experience_position%>
+			</p>
+			<ul class="list-group list-group-unbordered">
+				<li class="list-group-item">
+					<b>Email</b><a class="pull-right"><%= current_user.email%></a>
+				</li>
+				<li class="list-group-item">
+					<b>Mobile</b><a class="pull-right"><%= current_user.mobile_phone%></a>
+				</li>
+				<li class="list-group-item">
+					<b>Home</b><a class="pull-right"><%= current_user.home_phone%></a>
+				</li>
+			</ul>
+			<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+		</div>
+		<!-- /.box-body -->
+	</div>
+	<!-- /.box -->
+
+	<!-- About Me Box -->
+	<div class="box box-primary">
+		<div class="box-header with-border">
+			<h3 class="box-title">About Me</h3>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body">
+			<strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+
+			<p class="text-muted">
+				<b><%= @educaction_institution%></b>
+				<br/>
+				<%= @education_degree%>
+				<br/>
+				<%= @education_program%>
+				<br/>
+				<%= @education_specialization%>
+				<br/>
+
+			</p>
+
+			<hr>
+
+			<strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+
+			<p class="text-muted">
+				<%= current_user.address%>
+				<%= current_user.city%>
+				<%= current_user.province%>
+				<%= current_user.country%>
+			</p>
+
+			<hr>
+
+			<strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+
+			<p>
+				<span class="label label-danger">UI Design</span>
+				<span class="label label-success">Coding</span>
+				<span class="label label-info">Javascript</span>
+				<span class="label label-warning">PHP</span>
+				<span class="label label-primary">Node.js</span>
+			</p>
+
+			<hr>
+
+			<strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+			<p>
+				Last sign-in IP Address : <%= current_user.last_sign_in_ip%>
+
+			</p>
+		</div>
+		<!-- /.box-body -->
+	</div>
+	<!-- /.box -->
+</div>
+<!-- /.col -->
+<div class="col-md-9">
+	<div class="nav-tabs-custom">
+		<ul class="nav nav-tabs">
+			<li class="active">
+				<a href="#education" data-toggle="tab">Education</a>
+			</li>
+			<li>
+				<a href="#certifications_licenses" data-toggle="tab">Certifications/Licenses</a>
+			</li>
+			<li>
+				<a href="#trainings" data-toggle="tab">Trainings</a>
+			</li>
+			<li>
+				<a href="#work_experiences" data-toggle="tab">Work Experiences</a>
+			</li>
+			<li>
+				<a href="#skill_inventory" data-toggle="tab">Skill Inventory</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<!-- EDUCATION TAB PANE START-->
+			<div class="active tab-pane" id="education">
+				<%if !@user_education.empty?%>
+					<ul class="timeline timeline-inverse">
+						<!-- timeline time label -->
+							<!-- EDUCATION LISTING START -->
+								<%@user_education.each do |edu|%>
+									<li class="time-label">
+										<span class="bg-red"><%="#{edu.date_started} - #{edu.date_completed}"%></span>
+									</li>
+									<li>
+										<i class="fa  fa-graduation-cap bg-blue"></i>
+				
+										<div class="timeline-item">
+											<span class="time"><i class="fa  fa-check-square-o"></i> <%=edu.remarks%></span>
+				
+											<h3 class="timeline-header"><a href="#"><%=edu.institution%></a></h3>
+				
+											<div class="timeline-body">
+												<table>
+													<tr>
+														<td><b>Degree</b></td>
+														<td>&nbsp;:&nbsp;<%=edu.degree%></td>
+													</tr>
+													<tr>
+														<td><b>Program</b></td>
+														<td>&nbsp;:&nbsp;<%=edu.program%></td>
+													</tr>
+													<tr>
+														<td><b>Specialization</b></td>
+														<td>&nbsp;:&nbsp;<%=edu.specialization%></td>
+													</tr>
+																										
+												</table>
+											</div>
+											<div class="timeline-footer">
+												<a class="btn btn-primary btn-xs">Read more</a>
+											</div>
+										</div>
+									</li>
+								<%end%>
+							<!-- EDUCATION LISTING END -->
+						<li>
+							<i class="fa fa-clock-o bg-gray"></i>
+						</li>
+					</ul>
+				<%else%>
+		              <div class="callout callout-info">
+		                <h4>No current listing for Education.</h4>
+		                <p>Go to Manage Details > Education to add.</p>
+		              </div>
+				<%end%>			
+			</div>
+			<!-- EDUCATION TAB PANE END-->
+			
+			<!-- CERTIFICATIONS AND LICENSES TAB PANE START -->
+			<div class="tab-pane" id="certifications_licenses">
+				<%if !@user_certifications.empty?%>
+			            <div class="box-body">
+			              <table class="table table-bordered">
+			                <tr>
+			                  <th style="width: 10px">#</th>
+			                  <th>Certification/License</th>
+			                  <th style="width: 130px">Date Issued  </th>
+			                  <th style="width: 130px">Expiry Date</th>
+			                  <th>Remarks</th>
+			                  <th></th>
+			                </tr>
+			                <%item_no = 1%>
+			                <% @user_certifications.each do |user_certification| %>
+				                <tr>
+				                  <td><%=item_no%>.</td>
+				                  <td><%= user_certification.description %></td>
+				                  <td>
+				                  	  <%= user_certification.date_issued %>	
+				                  </td>
+				                  <td>
+				                  	  <%= user_certification.date_expiry %>
+				                  </td>
+				                  <td>
+				                  	<%if user_certification.note == "Active"%>
+				                  		<span class="badge bg-green"><%= user_certification.note %></span>
+				                  	<%else%>
+				                  		<span class="badge bg-red"><%= user_certification.note %></span>
+				                  	<%end%>
+				                  </td>
+				                </tr>
+				                <%item_no += 1%>
+				            <%end%>    
+			              </table>
+			            </div>				
+				<%else%>
+		              <div class="callout callout-info">
+		                <h4>No current listing for Certifications and Licenses.</h4>
+		                <p>Go to Manage Details > Certifications/Licenses to add.</p>
+		              </div>				
+				<%end%>
+			</div>
+			<!-- CERTIFICATIONS AND LICENSES TAB PANE END -->
+			
+			<!-- TRAININGS TAB PANE START -->
+			<div class="tab-pane" id="trainings">
+				<%if !@user_trainings.empty?%>
+			            <div class="box-body">
+			              <table class="table table-bordered">
+			                <tr>
+			                  <th style="width: 10px">#</th>
+			                  <th>Training</th>
+			                  <th style="width: 130px">Date Started</th>
+			                  <th style="width: 130px">Date Completed</th>
+			                  <th>Remarks</th>
+			                  <th></th>
+			                </tr>
+			                <%item_no = 1%>
+			                <% !@user_trainings.each do |training| %>
+				                <tr>
+				                  <td><%=item_no%>.</td>
+				                  <td><%= training.description %></td>
+				                  <td>
+				                  	  <%= training.date_started %>	
+				                  </td>
+				                  <td>
+				                  	  <%= training.date_completed %>
+				                  </td>
+				                  <td>
+				                  	<%if training.note == "Completed"%>
+				                  		<span class="badge bg-green"><%= training.note %></span>
+				                  	<%else%>
+				                  		<span class="badge bg-red"><%= training.note %></span>
+				                  	<%end%>
+				                  </td>
+				                </tr>
+				                <%item_no += 1%>
+				            <%end%>    
+			              </table>
+			            </div>				
+				<%else%>
+		              <div class="callout callout-info">
+		                <h4>No listing for Trainings.</h4>
+		                <p>Go to Manage Details > Trainings to add.</p>
+		              </div>				
+				<%end%>				
+			</div>
+			<!-- TRAININGS TAB PANE END -->
+			
+			<!-- WORK EXPERIENCES TAB PANE START -->
+			<div class="tab-pane" id="work_experiences">
+				<%if !@user_work_experiences.empty?%>
+					<ul class="timeline timeline-inverse">
+						<!-- timeline time label -->
+							<!-- EDUCATION LISTING START -->
+								<%!@user_work_experiences.each do |work|%>
+									<li class="time-label">
+										<span class="bg-red"><%="#{work.date_from} - #{work.date_to}"%></span>
+									</li>
+									<li>
+										<i class="fa  fa-graduation-cap bg-blue"></i>
+				
+										<div class="timeline-item">
+											<span class="time"><i class="fa  fa-user"></i> <%=work.position%></span>
+				
+											<h3 class="timeline-header"><a href="#"><%=work.company_name%></a></h3>
+				
+											<div class="timeline-body">
+												<table>
+													<tr>
+														<td><b>Industry</b></td>
+														<td>&nbsp;:&nbsp;<%=work.industry%></td>
+													</tr>													
+													<tr>
+														<td><b>Address</b></td>
+														<td>&nbsp;:&nbsp;<%=work.address%></td>
+													</tr>
+													<tr>
+														<td><b>City</b></td>
+														<td>&nbsp;:&nbsp;<%=work.city%></td>
+													</tr>
+													<tr>
+														<td><b>Province</b></td>
+														<td>&nbsp;:&nbsp;<%=work.province%></td>
+													</tr>
+													<tr>
+														<td><b>Country</b></td>
+														<td>&nbsp;:&nbsp;<%=work.country%></td>
+													</tr>																										
+												</table>
+											</div>
+											<div class="timeline-footer">
+												<a class="btn btn-primary btn-xs">Read more</a>
+											</div>
+										</div>
+									</li>
+								<%end%>
+							<!-- EDUCATION LISTING END -->
+						<li>
+							<i class="fa fa-clock-o bg-gray"></i>
+						</li>
+					</ul>
+				<%else%>
+		              <div class="callout callout-info">
+		                <h4>No listing for Work Experiences.</h4>
+		                <p>Go to Manage Details > Work Experiences to add.</p>
+		              </div>
+				<%end%>	
+			</div>
+			<!-- WORK EXPERIENCES TAB PANE END   -->
+
+			<!-- SKILLS INVENTORY TAB PANE START   -->
+			<div class="tab-pane" id="skill_inventory">
+		              <div class="callout callout-info">
+		                <h4>User Skills Inventory.</h4>
+		                <p>Development is ongoing for this feature.</p>
+		              </div>				
+			</div>
+			<!-- SKILLS INVENTORY TAB PANE END   -->
+			<!-- /.tab-pane -->
+		</div>
+		<!-- /.tab-content -->
+	</div>
+	<!-- /.nav-tabs-custom -->
+</div>
+<!-- /.col -->
+<!-- /.row -->
+<%end%>
