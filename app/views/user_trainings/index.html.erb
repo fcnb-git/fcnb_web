@@ -26,7 +26,7 @@
 	                  	  <%= user_training.date_started %>	
 	                  </td>
 	                  <td>
-	                  	  <%= user_training.date_completed %>
+	                  	  <%= UtilityHelper.display_as_in_progress_if_null(user_training.date_completed) %>
 	                  </td>
 	                  <td>
 	                  	<%if user_training.note == "Completed"%>

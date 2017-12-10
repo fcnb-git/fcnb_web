@@ -1,65 +1,61 @@
 <%content_for :content_page do%>
-<p id="notice"><%= notice %></p>
 <div class="row">
         <div class="col-md-9">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Certifications and Licenses</h3>
+              <h3 class="box-title">Certifications and Licences</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table class="table table-bordered">
-                <tr>
-                  <th style="width: 10px">#</th>
-                  <th>Certification/License</th>
-                  <th style="width: 130px">Date Issued  </th>
-                  <th style="width: 130px">Expiry Date</th>
-                  <th>Remarks</th>
-                  <th></th>
-                </tr>
-                <%item_no = 1%>
-                <% @user_certifications.each do |user_certification| %>
-	                <tr>
-	                  <td><%=item_no%>.</td>
-	                  <td><%= user_certification.description %></td>
-	                  <td>
-	                  	  <%= user_certification.date_issued %>	
-	                  </td>
-	                  <td>
-	                  	  <%= user_certification.date_expiry %>
-	                  </td>
-	                  <td>
-	                  	<%if user_certification.note == "Active"%>
-	                  		<span class="badge bg-green"><%= user_certification.note %></span>
-	                  	<%else%>
-	                  		<span class="badge bg-red"><%= user_certification.note %></span>
-	                  	<%end%>
-	                  </td>
-	                  <td>
-		                  	<%= link_to edit_user_certification_path(user_certification),class: "btn btn-primary btn-xs" do%>
-	                      		<i class="fa fa-edit"></i>
-	                      	<%end%>		                  		
-	                  </td>
-	                  <td>
-	                      	<%= button_to( user_certification, {:onclick => "return confirm('Do you want to remove this entry?')", :method => :delete, :remote => true,class: "btn btn-primary btn-xs"}) do %>
-	                      		<i class="fa fa-trash-o"></i>
-	                      	<%end%>	                  	
-	                  </td>
-	                </tr>
-	                <%item_no += 1%>
-	            <%end%>    
-              </table>
+            	<%if !@user_certifications.empty?%>
+					  <table class="table table-bordered">
+		                <tr>
+		                  <th style="width: 10px">#</th>
+		                  <th>Certification/Licence</th>
+		                  <th style="width: 130px">Date Issued  </th>
+		                  <th style="width: 130px">Expiry Date</th>
+		                  <th>Remarks</th>
+		                  <th></th>
+		                </tr>
+		                <%item_no = 1%>
+		                <% @user_certifications.each do |user_certification| %>
+			                <tr>
+			                  <td><%=item_no%>.</td>
+			                  <td><%= user_certification.description %></td>
+			                  <td>
+			                  	  <%= user_certification.date_issued %>	
+			                  </td>
+			                  <td>
+			                  	  <%= user_certification.date_expiry %>
+			                  </td>
+			                  <td>
+			                  	<%if user_certification.note == "Active"%>
+			                  		<span class="badge bg-green"><%= user_certification.note %></span>
+			                  	<%else%>
+			                  		<span class="badge bg-red"><%= user_certification.note %></span>
+			                  	<%end%>
+			                  </td>
+			                  <td>
+				                  	<%= link_to edit_user_certification_path(user_certification),class: "btn btn-primary btn-xs" do%>
+			                      		<i class="fa fa-edit"></i>
+			                      	<%end%>		                  		
+			                  </td>
+			                  <td>
+			                      	<%= button_to( user_certification, {:onclick => "return confirm('Do you want to remove this entry?')", :method => :delete, :remote => true,class: "btn btn-primary btn-xs"}) do %>
+			                      		<i class="fa fa-trash-o"></i>
+			                      	<%end%>	                  	
+			                  </td>
+			                </tr>
+			                <%item_no += 1%>
+			            <%end%>    
+		              </table>            	
+            	<%else%>
+		              <div class="callout callout-danger">
+		                <h5>No record of your Certifications/Licences found.</h5>
+		              </div>              	
+            	<%end%>	
             </div>
             <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">&raquo;</a></li>
-              </ul>
-            </div>
           </div>
           <!-- /.box -->
         </div>
@@ -67,7 +63,9 @@
 <div class="row">
 	<div class="col-md-6">
 		<div style="margin-left: 20px;">
-			<%= link_to 'Add Certification/Licenses', new_user_certification_path %>
+				<%= link_to new_user_certification_path, class: "btn btn-primary" do %>
+				  <i class="fa fa-plus">  Add Certification/Licences </i>
+				<% end %>  			
 		</div>	
 	</div>	
 </div

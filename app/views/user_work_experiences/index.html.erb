@@ -11,71 +11,73 @@
               <!-- /.tab-pane -->
               <div class="active tab-pane" id="education">
                 <!-- The timeline -->
-                <ul class="timeline timeline-inverse">
-                <% @user_work_experiences.each do |user_work_experience| %>
-	                
-	                  <!-- timeline time label -->
-	                  <li class="time-label">
-	                        <span class="bg-red">
-	                          <%= "#{user_work_experience.date_from} - #{user_work_experience.date_to}" %>
-	                        </span>
-	                  </li>
-	                  <!-- /.timeline-label -->
-	                  <!-- timeline item -->
-	                  <li>
-	                    <i class="fa  fa-graduation-cap bg-blue"></i>
-	
-	                    <div class="timeline-item">
-	                      <span class="time">
-	                      		<i class="fa  fa-odnoklassniki"></i> 
-	                      		Position : <%= user_work_experience.position   %>
-	                      </span>
-	
-	                      <h3 class="timeline-header">
-		                  	<%= link_to edit_user_work_experience_path(user_work_experience),class: "btn btn-primary btn-xs" do%>
-	                      		<i class="fa fa-edit"></i>
-	                      	<%end%>	                      		
-	                      	<a href="#"><%= user_work_experience.company_name %></a>
-	                      </h3>
-	
-	                      <div class="timeline-body">
-								<b><%= user_work_experience.industry %></b><br/>
-								Address : <%= user_work_experience.address %><br/>
-								City : <%= user_work_experience.city %><br/>
-								Province : <%= user_work_experience.province %><br/>
-								Country : <%= user_work_experience.country %><br/>
-	                      </div>
-	                      <div class="timeline-footer">
-							<table>
-								<tr>
-									<td>
-					                  	<%= link_to "/#",class: "btn btn-primary btn-xs" do%>
-				                      		<i class="fa fa-file-powerpoint-o"> Projects</i>
-				                      	<%end%>	 
-										
-									</td>
-
-									<td>&nbsp;&nbsp;&nbsp;</td>
-									<td>
-				                      	<%= button_to( user_work_experience, {:onclick => "return confirm('Do you want to remove this entry?')", :method => :delete, :remote => true,class: "btn btn-danger btn-xs"}) do %>
-				                      		<i class="fa fa-trash-o"></i>
-				                      	<%end%>
-										
-									</td>									
-								</tr>
-							</table>	                      		                      	
-                     	
-	                      </div>
-	                    </div>
-	                  </li>
-	                  <!-- END timeline item -->
-
-	                
-	              <%end%>
-	                  <li>
-	                    <i class="fa fa-clock-o bg-gray"></i>
-	                  </li>	              
-	              </ul>  
+                
+                	<% if !@user_work_experiences.empty? %>
+                		<ul class="timeline timeline-inverse">
+						<% @user_work_experiences.each do |user_work_experience| %>
+			                  <li class="time-label">
+			                        <span class="bg-red">
+			                          <%= "#{user_work_experience.date_from} - #{UtilityHelper.display_as_present_if_null(user_work_experience.date_to)}" %>
+			                        </span>
+			                  </li>
+			                  <li>
+			                    <i class="fa  fa-graduation-cap bg-blue"></i>
+			
+			                    <div class="timeline-item">
+			                      <span class="time">
+			                      		<i class="fa  fa-odnoklassniki"></i> 
+			                      		Position : <%= user_work_experience.position   %>
+			                      </span>
+			
+			                      <h3 class="timeline-header">
+				                  	<%= link_to edit_user_work_experience_path(user_work_experience),class: "btn btn-primary btn-xs" do%>
+			                      		<i class="fa fa-edit"></i>
+			                      	<%end%>	                      		
+			                      	<a href="#"><%= user_work_experience.company_name %></a>
+			                      </h3>
+			
+			                      <div class="timeline-body">
+										<b><%= user_work_experience.industry %></b><br/>
+										Address : <%= user_work_experience.address %><br/>
+										City : <%= user_work_experience.city %><br/>
+										Province : <%= user_work_experience.province %><br/>
+										Country : <%= user_work_experience.country %><br/>
+			                      </div>
+			                      <div class="timeline-footer">
+									<table>
+										<tr>
+											<td>
+							                  	<%= link_to "/#",class: "btn btn-primary btn-xs" do%>
+						                      		<i class="fa fa-file-powerpoint-o"> Projects</i>
+						                      	<%end%>	 
+												
+											</td>
+		
+											<td>&nbsp;&nbsp;&nbsp;</td>
+											<td>
+						                      	<%= button_to( user_work_experience, {:onclick => "return confirm('Do you want to remove this entry?')", :method => :delete, :remote => true,class: "btn btn-danger btn-xs"}) do %>
+						                      		<i class="fa fa-trash-o"></i>
+						                      	<%end%>
+												
+											</td>									
+										</tr>
+									</table>	                      		                      	
+		                     	
+			                      </div>
+			                    </div>
+			                  </li>
+			                  
+			              <%end%>
+			              <li>
+			                  <i class="fa fa-clock-o bg-gray"></i>
+			              </li>
+			           </ul>                   	
+                	<%else%>
+		              <div class="callout callout-danger">
+		                <h5>No record of your Work Experiences found.</h5>
+		              </div>                  	
+                	<%end%>
+	              
               </div>
               <br />
 				<%= link_to new_user_work_experience_path, class: "btn btn-primary" do %>
@@ -91,6 +93,4 @@
           </div>
 
 <br>
-
-<%= link_to 'New User Work Experience', new_user_work_experience_path %>
 <%end%>

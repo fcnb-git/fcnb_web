@@ -55,13 +55,14 @@
 					<label for="inputPRDate" class="col-sm-3 control-label">Date Completed</label>
 						<div class="col-sm-9">
 							<%= f.date_field :date_completed, autofocus: true, class: "form-control" %>
+							(leave date completed blank if not yet completed)
 						</div>				                    
 				</div>	
 
 				<div class="form-group has-feedback">
 					<label for="inputGivenName" class="col-sm-3 control-label">Remarks</label>
 					<div class="col-sm-9">
-						<%= f.text_field :remarks, autofocus: true, class: "form-control", placeholder: "Remarks" %>
+						<%= f.select(:remarks, ["Not Completed","Completed"],{},{class:"form-control"})%>
 					</div>				                    
 				</div>			
 				<div class="form-group has-feedback">

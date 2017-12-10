@@ -49,7 +49,7 @@
 						                  <div class="form-group has-feedback">
 						                    <label for="inputMobilePhone" class="col-sm-3 control-label">Mobile Phone</label>
 											<div class="col-sm-9">
-											    <%= f.text_field :mobile_phone, autofocus: true, class: "form-control", placeholder: "Mobile Phone" %>
+											    <%= f.text_field :mobile_phone, autofocus: true, class: "form-control", placeholder: "e.g. +1 (xxx) xxx-xxxx" %>
 											    <span class="glyphicon glyphicon-phone form-control-feedback"></span>
 											</div>				                    
 						                  </div>
@@ -57,7 +57,7 @@
 						                  <div class="form-group has-feedback">
 						                    <label for="inputHomePhone" class="col-sm-3 control-label">Home Phone</label>
 											<div class="col-sm-9">
-											    <%= f.text_field :home_phone, autofocus: true, class: "form-control", placeholder: "Home Phone" %>
+											    <%= f.text_field :home_phone, autofocus: true, class: "form-control", placeholder: "e.g. +1 (xxx) xxx-xxxx" %>
 											    <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
 											</div>				                    
 						                  </div>
@@ -82,7 +82,7 @@
 						                  <div class="form-group has-feedback">
 						                    <label for="inputPassword" class="col-sm-3 control-label">Password</label>
 											<div class="col-sm-9">
-											    <%= f.password_field :password, autofocus: true, class: "form-control", placeholder: "Password" %>
+											    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
 											    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 											    <i>(leave blank if you don't want to change it)</i>
 											</div>
@@ -91,7 +91,7 @@
 						                  <div class="form-group has-feedback">
 						                    <label for="inputPasswordConfirmation" class="col-sm-3 control-label">Confirm</label>
 											<div class="col-sm-9">
-											    <%= f.password_field :password_confirmation, autofocus: true, class: "form-control", placeholder: "Confirm password" %>
+											    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirm password" %>
 							                </div>
 							              </div>  
 							                  
@@ -148,6 +148,12 @@
 											    <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
 											</div>				                    
 						                  </div>
+						                  <div class="form-group has-feedback">
+						                    <label for="inputCountry" class="col-sm-3 control-label">Country</label>
+											<div class="col-sm-9">
+											    <%= f.text_field :country, autofocus: true, class: "form-control", placeholder: "Country" %>
+											</div>				                    
+						                  </div>						                  
 						                  <div style="height: 5px;"></div>
 					                <!-- /.Personal Information -->
 					                

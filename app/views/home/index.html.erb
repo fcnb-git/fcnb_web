@@ -113,7 +113,7 @@
 							<!-- EDUCATION LISTING START -->
 								<%@user_education.each do |edu|%>
 									<li class="time-label">
-										<span class="bg-red"><%="#{edu.date_started} - #{edu.date_completed}"%></span>
+										<span class="bg-red"><%="#{edu.date_started} - #{UtilityHelper.display_as_present_if_null(edu.date_completed)}"%></span>
 									</li>
 									<li>
 										<i class="fa  fa-graduation-cap bg-blue"></i>
@@ -227,7 +227,7 @@
 				                  	  <%= training.date_started %>	
 				                  </td>
 				                  <td>
-				                  	  <%= training.date_completed %>
+				                  	  <%= UtilityHelper.display_as_present_if_null(training.date_completed) %>
 				                  </td>
 				                  <td>
 				                  	<%if training.note == "Completed"%>
@@ -258,7 +258,7 @@
 							<!-- EDUCATION LISTING START -->
 								<%!@user_work_experiences.each do |work|%>
 									<li class="time-label">
-										<span class="bg-red"><%="#{work.date_from} - #{work.date_to}"%></span>
+										<span class="bg-red"><%="#{work.date_from} - #{UtilityHelper.display_as_present_if_null(work.date_to)}"%></span>
 									</li>
 									<li>
 										<i class="fa  fa-graduation-cap bg-blue"></i>
