@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171210180056) do
+ActiveRecord::Schema.define(version: 20171211003159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,19 @@ ActiveRecord::Schema.define(version: 20171210180056) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "skill_inventories", force: :cascade do |t|
-    t.string "category"
-    t.string "specific_skill"
-    t.string "remarks"
+  create_table "skill_categories", force: :cascade do |t|
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "skill_inventories", force: :cascade do |t|
+    t.string "specific_skill"
+    t.string "remarks", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "skill_category_id"
+    t.index ["skill_category_id"], name: "index_skill_inventories_on_skill_category_id"
   end
 
   create_table "user_certifications", force: :cascade do |t|
@@ -161,4 +168,5 @@ ActiveRecord::Schema.define(version: 20171210180056) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "skill_inventories", "skill_categories"
 end

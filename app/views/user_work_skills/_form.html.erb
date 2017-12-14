@@ -10,7 +10,18 @@
       </ul>
     </div>
   <% end %>
+  <%= form.hidden_field :user_work_experience_role_id, value: params[:user_work_experience_role_id]%>	
+  
+  <div class="field">
+  	<%= form.collection_select :id, @skill_categories, :id, :description, {:prompt => "Select skill category",:class=>"skill_category_selection"} %>
+  </div>
 
+
+  <div class="field">
+  	<%= form.collection_select :skill_inventory_id, @skill_inventories, :id, :specific_skill, {:prompt => "Select specific skill",:class=>"skill_inventory_selection"}  %>
+  </div>
+
+  
   <div class="field">
     <%= form.label :total_experience %>
     <%= form.number_field :total_experience, id: :user_work_skill_total_experience %>
@@ -26,10 +37,7 @@
     <%= form.number_field :last_time_used_duration_years, id: :user_work_skill_last_time_used_duration_years %>
   </div>
 
-  <div class="field">
-    <%= form.label :refresher %>
-    <%= form.text_field :refresher, id: :user_work_skill_refresher %>
-  </div>
+
 
   <div class="field">
     <%= form.label :notes %>

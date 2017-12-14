@@ -11,12 +11,10 @@
             <div class="tab-content">
             	<ul class="timeline timeline-inverse">
 	                  <li class="time-label">
-	                  		<%if !@user_work_experience.nil?%>
-	                        	<span class="bg-gray">
-									<b>Company Name : <%=@user_work_experience.company_name%></b>
-									<%="  (#{@user_work_experience.date_from} - #{UtilityHelper.display_as_present_if_null(@user_work_experience.date_to)})"%>
-	                        	</span>
-	                        <%end%>
+	                        <span class="bg-gray">
+								<b>Company Name : <%=@user_work_experience.company_name%></b>
+								<%="  (#{@user_work_experience.date_from} - #{UtilityHelper.display_as_present_if_null(@user_work_experience.date_to)})"%>		                        	
+	                        </span>
 	                  </li>            	
 	             </ul>     
                           	
@@ -29,47 +27,36 @@
 	                  <!-- timeline time label -->
 	                  <li class="time-label">
 	                        <span class="bg-red">
+	                        	
 	                          <%= "#{user_work_experience_role.date_from} - #{UtilityHelper.display_as_present_if_null(user_work_experience_role.date_to)}" %>
 	                        </span>
 	                  </li>
 	                  <!-- /.timeline-label -->
 	                  <!-- timeline item -->
 	                  <li>
-	                    <i class="fa  fa-users bg-blue"></i>
+	                    <i class="fa  fa-graduation-cap bg-blue"></i>
 	
 	                    <div class="timeline-item">
 	                      <span class="time">
 	                      		<i class="fa fa-clock-o"></i> 
-	                      		Project Name : <%=user_work_experience_role.project_name%>
+	                      		Completed
 	                      </span>
 	
 	                      <h3 class="timeline-header">
-		                  	<%= link_to edit_user_work_experience_role_path(user_work_experience_role,:user_work_experience_id => user_work_experience_role.user_work_experience_id),class: "btn btn-primary btn-xs" do%>
+		                  	<%= link_to edit_user_work_experience_role_path(user_work_experience_role),class: "btn btn-primary btn-xs" do%>
 	                      		<i class="fa fa-edit"></i>
 	                      	<%end%>	                      		
-	                      	<a href="#"><%= user_work_experience_role.role %></a>
+	                      	<a href="#"><%= user_work_experience_role.project_name %></a>
 	                      </h3>
 	
 	                      <div class="timeline-body">
-	                      		<b>Job Description :</b> <br />
+	                      		<h5><%= user_work_experience_role.role %></h5><br />
 								<%= user_work_experience_role.notes %>
 	                      </div>
 	                      <div class="timeline-footer">
-	                      	<table>
-	                      		<tr>
-	                      			<td>
-					                  	<%= link_to user_work_skills_path(:user_work_experience_role_id=>user_work_experience_role.id),class: "btn btn-primary btn-xs" do%>
-				                      		<i class="fa fa-edit">  Skills applied</i>
-				                      	<%end%>	
-	                      			</td>
-	                      			<td style="width: 5px;"></td>
-	                      			<td>
-				                      	<%= button_to( user_work_experience_role, {:onclick => "return confirm('Do you want to remove this entry?')", :method => :delete, :remote => true,class: "btn btn-danger btn-xs"}) do %>
-				                      		<i class="fa fa-trash-o"></i>
-				                      	<%end%>
-	                      			</td>
-	                      		</tr>
-	                      	</table>
+	                      	<%= button_to( user_work_experience_role, {:onclick => "return confirm('Do you want to remove this entry?')", :method => :delete, :remote => true,class: "btn btn-primary btn-xs"}) do %>
+	                      		<i class="fa fa-trash-o">  Delete</i>
+	                      	<%end%>
 	                      </div>
 	                    </div>
 	                  </li>
@@ -88,7 +75,7 @@
               <!-- /.tab-pane -->
               
               <br />
-				<%= link_to new_user_work_experience_role_path(user_work_experience_id:@user_work_experience.id), class: "btn btn-primary" do %>
+				<%= link_to new_user_work_experience_role_path, class: "btn btn-primary" do %>
 				  <i class="fa fa-plus">  Add roles performed for this company </i>
 				<% end %>              
               <!-- /.tab-pane -->

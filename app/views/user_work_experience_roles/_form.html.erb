@@ -1,42 +1,71 @@
-<%= form_with(model: user_work_experience_role, local: true) do |form| %>
-  <% if user_work_experience_role.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user_work_experience_role.errors.count, "error") %> prohibited this user_work_experience_role from being saved:</h2>
+<%= form_with(model: user_work_experience_role, local: true,class: "form-horizontal") do |form| %>
+	<div class="col-sm-6">
+		  <% if user_work_experience_role.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(user_work_experience_role.errors.count, "error") %> prohibited this work experience role from being saved:</h2>
+		
+		      <ul>
+		      <% user_work_experience_role.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+		
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <%=yield :tab_title%>	
+            </ul>
+            <div class="tab-content">
+              <div class="active tab-pane" id="add_training">
+				<%= form.hidden_field :user_work_experience_id, value: params[:user_work_experience_id]%> 
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Job Role</label>
+					<div class="col-sm-9">
+						<%= form.text_field :role, autofocus: true, class: "form-control", placeholder: "Job Description / Role" %>
+					</div>				                    
+				</div>
 
-      <ul>
-      <% user_work_experience_role.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">From Date</label>
+					<div class="col-sm-9">
+						<%= form.date_field :date_from, autofocus: true, class: "form-control" %>
+						<span class="fa fa-calendar form-control-feedback"></span>
+					</div>				                    
+				</div>
+				
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">To Date</label>
+					<div class="col-sm-9">
+						<%= form.date_field :date_to, autofocus: true, class: "form-control" %>
+						<span class="fa fa-calendar form-control-feedback"></span>
+					</div>				                    
+				</div>
 
-  <div class="field">
-    <%= form.label :role %>
-    <%= form.text_field :role, id: :user_work_experience_role_role %>
-  </div>
 
-  <div class="field">
-    <%= form.label :date_from %>
-    <%= form.date_select :date_from, id: :user_work_experience_role_date_from %>
-  </div>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Project Name</label>
+					<div class="col-sm-9">
+						<%= form.text_field :project_name, autofocus: true, class: "form-control", placeholder: "Project name (if any)" %>
+					</div>				                    
+				</div>
+				
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Description</label>
+					<div class="col-sm-9">
+						<%= form.text_area :notes, autofocus: true, class: "form-control",cols:40, rows:5, placeholder: "Description" %>
+					</div>				                    
+				</div>				
+				
+				<div class="form-group has-feedback">
+					<div style="margin-left: 150px;">
+						<%= form.submit "Save", class: "btn btn-danger"%>
+					</div>
+				</div>																			
 
-  <div class="field">
-    <%= form.label :date_to %>
-    <%= form.date_select :date_to, id: :user_work_experience_role_date_to %>
-  </div>
+              </div>
+            </div>
+   </div>
 
-  <div class="field">
-    <%= form.label :project_name %>
-    <%= form.text_field :project_name, id: :user_work_experience_role_project_name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :notes %>
-    <%= form.text_area :notes, id: :user_work_experience_role_notes %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
