@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :user_work_skills
+  # View Routes info rails/info/routes
   resources :skill_categories
   resources :skill_inventories
   resources :user_work_experience_roles
@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   resources :user_trainings
   resources :organizations
   resources :user_educations
+  
+  resources :user_work_skills do
+    collection do
+      get 'get_skill_inventories', to: "user_work_skills#get_skill_inventories"
+    end
+  end
+  
   
   # devise_for :users
   root "home#index"

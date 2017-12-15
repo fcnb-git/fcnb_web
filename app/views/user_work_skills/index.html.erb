@@ -22,54 +22,36 @@
             <tr>
               <th>Category</th>
               <th>Specific Skill</th>
-              <th>Experience</th>
               <th>Last used</th>
+              <th>Exp(yrs)</th>
+              <th></th>
+              <th></th>
             </tr>
             </thead>
             <tbody>
-		            <tr>
-		              <td>Embedded Software</td>
-		              <td>Automotive Software: Car Navigation System</td>
-		              <td>8 yrs.</td>
-		              <td>2016-05-18</td>
-		            </tr>
-		            <tr>
-		              <td>Operating Systems</td>
-		              <td>Unix</td>
-		              <td>12 yrs.</td>
-		              <td>2016-06-15</td>
-		            </tr>
-		            		            
-		            <tr>
-		              <td>Programming and Scripting</td>
-		              <td>Unix/Linux Shell (sh,csh,ksh)</td>
-		              <td>5 yrs.</td>
-		              <td>2017-09-30</td>
-		            </tr>		            
-		            <tr>
-		              <td>Product Specific Technology : Network Software</td>
-		              <td>IT: Web/DBMS/Security</td>
-		              <td>3 yrs.</td>
-		              <td>2017-03-16</td>
-		            </tr>		
-		            <tr>
-		              <td>Web Application Development</td>
-		              <td>J2EE :  JSP/Servlets</td>
-		              <td>7 yrs.</td>
-		              <td>2017-02-14</td>
-		            </tr>	
-		            <tr>
-		              <td>Web Application Development</td>
-		              <td>J2EE :  Hibernate</td>
-		              <td>4 yrs.</td>
-		              <td>2015-02-14</td>
-		            </tr>
-		            <tr>
-		              <td>Web Application Development</td>
-		              <td>MS .NET Framework</td>
-		              <td>8 yrs.</td>
-		              <td>2015-02-14</td>
-		            </tr>		            		            	                        		            
+            	<%@skill_inventories.each do |skill_inventory|%>
+            		<%skill_inventory.user_work_skills.each do |work_skill|%>
+			            <tr>
+			              <td><%=skill_inventory.skill_category.description%></td>
+			              <td><%=skill_inventory.specific_skill%></td>
+			              <td><%=work_skill.last_time_used%></td>
+			              <td><%=UtilityHelper.years_experience(work_skill.total_experience)%></td>
+			              <td width="3px;">
+		                  	<%= link_to edit_user_work_skill_path(work_skill.id,:user_work_experience_role_id => work_skill.user_work_experience_role_id),class: "btn btn-primary btn-xs" do%>
+	                      		<i class="fa fa-edit"></i>
+	                      	<%end%>	                      		
+			              </td>
+			              <td width="3px;">
+			              	
+						    <%= button_to( work_skill, {:onclick => "return confirm('Do you want to remove this entry?')", :method => :delete, :remote => true,class: "btn btn-danger btn-xs"}) do %>
+						             <i class="fa fa-trash-o"></i>
+						    <%end%>
+
+			              </td>
+			              
+			            </tr>
+			        <%end%>     
+		        <%end%>    
             </tbody>
           </table>
         </div>
@@ -83,12 +65,5 @@
 		  <i class="fa fa-plus">  Add skills applied for this role </i>
 	  <% end %>   	  
       <!-- this row will not appear when printing -->
-      <div class="row no-print">
-        <div class="col-xs-12">
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
-          </button>
-        </div>
-      </div>
     </section>
 <%end%>

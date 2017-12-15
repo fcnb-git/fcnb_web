@@ -1,2 +1,2 @@
-user = User.find_by(email: "fcnb.devteam@gmail.com")
-user.user_work_experiences.create(employer_name: "NEC")
+result = User.joins(:user_work_experiences).find_by("users.id = 1")
+

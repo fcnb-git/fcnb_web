@@ -1,6 +1,14 @@
-<h1>Editing User Work Skill</h1>
-
+<%content_for :tab_title do %>
+	<li class="active"><a href="#add_work_experience_skill" data-toggle="tab">Edit skill</a></li>
+<%end%>
+<%content_for :content_page do%>
 <%= render 'form', user_work_skill: @user_work_skill %>
 
 <%= link_to 'Show', @user_work_skill %> |
 <%= link_to 'Back', user_work_skills_path %>
+
+<%end%>
+
+
+
+	

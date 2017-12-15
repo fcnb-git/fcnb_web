@@ -1,50 +1,72 @@
-<%= form_with(model: user_work_skill, local: true) do |form| %>
-  <% if user_work_skill.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user_work_skill.errors.count, "error") %> prohibited this user_work_skill from being saved:</h2>
+<%= form_with(model: user_work_skill, local: true,class: "form-horizontal") do |form| %>
+	<div class="col-sm-9">
+		  <% if user_work_skill.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(user_work_skill.errors.count, "error") %> prohibited this user_work_skill from being saved:</h2>
+		
+		      <ul>
+		      <% user_work_skill.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+		  <%= form.hidden_field :user_work_experience_role_id, value: params[:user_work_experience_role_id]%>
+		
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <%=yield :tab_title%>	
+            </ul>
+            <div class="tab-content">
+              <div class="active tab-pane" id="add_training">
+              	
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Specific Skill</label>
+					<div class="col-sm-9">
+						<%= form.collection_select :skill_inventory_id, @skill_inventories, :id, :categorized_specific_skill, {:prompt => "Select specific skill",:class=>"skill_inventory_selection"}  %>
+					</div>				                    
+				</div>
 
-      <ul>
-      <% user_work_skill.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= form.hidden_field :user_work_experience_role_id, value: params[:user_work_experience_role_id]%>	
-  
-  <div class="field">
-  	<%= form.collection_select :id, @skill_categories, :id, :description, {:prompt => "Select skill category",:class=>"skill_category_selection"} %>
-  </div>
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Experience</label>
+					<div class="col-sm-9">
+						<table>
+							<tr>
+								<td>
+									<%= form.number_field :total_experience,size:5, id: :user_work_skill_total_experience %> <br/>(no. of years)			
+								</td>
+								<td>
+									<%= form.date_field :last_time_used, autofocus: true%> <br/>(date last used)			
+								</td>
+							</tr>
+						</table>
+					</div>				                    
+				</div>
+
+				<div class="form-group has-feedback">
+					<label for="inputGivenName" class="col-sm-3 control-label">Refresher?</label>
+					<div class="col-sm-9">
+						<%= form.select(:refresher, ["No","Yes"],{},{class:"form-control", :style=>"width:100px"})%>
+					</div>				                    
+				</div>
+
+				
+				<div class="form-group has-feedback">
+					<div class="col-sm-9 pull-right">
+						<%= form.submit "Save", class: "btn btn-danger"%>
+					</div>
+
+				</div>
+				</div>																			
+
+              </div>
+            </div>
+			    <%= link_to user_work_skills_path(user_work_experience_role_id:params[:user_work_experience_role_id]),class: "btn btn-primary btn-xs" do%>
+				    <i class="fa  fa-level-up">  return to previous page</i>
+				<%end%>            
+   		  </div>
+   		  
 
 
-  <div class="field">
-  	<%= form.collection_select :skill_inventory_id, @skill_inventories, :id, :specific_skill, {:prompt => "Select specific skill",:class=>"skill_inventory_selection"}  %>
-  </div>
 
-  
-  <div class="field">
-    <%= form.label :total_experience %>
-    <%= form.number_field :total_experience, id: :user_work_skill_total_experience %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_time_used %>
-    <%= form.date_select :last_time_used, id: :user_work_skill_last_time_used %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_time_used_duration_years %>
-    <%= form.number_field :last_time_used_duration_years, id: :user_work_skill_last_time_used_duration_years %>
-  </div>
-
-
-
-  <div class="field">
-    <%= form.label :notes %>
-    <%= form.text_area :notes, id: :user_work_skill_notes %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

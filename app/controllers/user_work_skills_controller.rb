@@ -8,7 +8,7 @@ class UserWorkSkillsController < ApplicationController
   def index
     @user_work_experience_role = UserWorkExperienceRole.find_by(id: params[:user_work_experience_role_id])
     @user_work_experience = UserWorkExperience.find_by(id: @user_work_experience_role.user_work_experience_id)
-    @user_work_skills = UserWorkSkill.all
+    @skill_inventories = SkillInventory.includes(:user_work_skills,:skill_category).where(:"user_work_skills.user_work_experience_role_id" => @user_work_experience_role.id)
      render layout: 'home'
   end
 
@@ -21,7 +21,8 @@ class UserWorkSkillsController < ApplicationController
   # GET /user_work_skills/new
   def new
     @skill_categories = SkillCategory.all
-    @skill_inventories = SkillInventory.all
+    # @skill_inventories = SkillInventory.all.order("specific_skill ASC")
+    @skill_inventories = SkillInventory.joins(:skill_category).order("skill_categories.description ASC")
     puts "COUNT : #{@skill_inventories.count}"       
     @user_work_skill = UserWorkSkill.new
      render layout: 'home'
@@ -29,6 +30,8 @@ class UserWorkSkillsController < ApplicationController
 
   # GET /user_work_skills/1/edit
   def edit
+    @skill_categories = SkillCategory.all
+    @skill_inventories = SkillInventory.all    
      render layout: 'home'
   end
 
@@ -64,14 +67,13 @@ class UserWorkSkillsController < ApplicationController
   def update
     respond_to do |format|
       if @user_work_skill.update(user_work_skill_params)
-        format.html { redirect_to @user_work_skill, notice: 'User work skill was successfully updated.' }
+        format.html { redirect_to action:"index",:user_work_experience_role_id=>@user_work_skill.user_work_experience_role_id }
         format.json { render :show, status: :ok, location: @user_work_skill }
       else
         format.html { render :edit }
         format.json { render json: @user_work_skill.errors, status: :unprocessable_entity }
       end
     end
-     render layout: 'home'
   end
 
   # DELETE /user_work_skills/1
@@ -79,10 +81,13 @@ class UserWorkSkillsController < ApplicationController
   def destroy
     @user_work_skill.destroy
     respond_to do |format|
-      format.html { redirect_to user_work_skills_url, notice: 'User work skill was successfully destroyed.' }
+      format.html { redirect_to action:"index", :user_work_experience_role_id=> @user_work_skill.user_work_experience_role_id }
       format.json { head :no_content }
     end
-     render layout: 'home'
+  end
+  
+  def get_skill_inventories
+      puts "GET SKILL METHOD : CALLED"
   end
   
   private
@@ -93,6 +98,6 @@ class UserWorkSkillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_work_skill_params
-      params.require(:user_work_skill).permit(:total_experience, :last_time_used, :last_time_used_duration_years, :refresher, :notes,:user_work_experience_role_id,:skill_inventory_id)
+      params.require(:user_work_skill).permit(:total_experience, :last_time_used, :last_time_used_duration_years, :refresher, :notes,:user_work_experience_role_id,:skill_inventory_id,:id)
     end
 end

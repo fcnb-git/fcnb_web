@@ -15,5 +15,20 @@ module UtilityHelper
        return param_date  
      end
   end
+
+  def self.years_experience(param_year)
+      if (param_year.nil?)
+        return "(none)"
+      else
+        if (param_year > 1)
+            return "#{param_year} years"
+        elsif (param_year <= 1)
+            return "#{param_year} year"
+        else
+            return "(none)"       
+        end
+      end  
+  end
+
     
 end
