@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'admin/index'
+
   # View Routes info rails/info/routes
   resources :skill_categories
   resources :skill_inventories
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
   resources :user_trainings
   resources :organizations
   resources :user_educations
+  resources :admin
   
   resources :user_work_skills do
     collection do
