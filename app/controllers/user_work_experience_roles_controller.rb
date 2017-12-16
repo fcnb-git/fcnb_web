@@ -80,6 +80,6 @@ class UserWorkExperienceRolesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_work_experience_role_params
-      params.require(:user_work_experience_role).permit(:role, :date_from, :date_to, :project_name, :notes,:user_work_experience_id)
+      params.require(:user_work_experience_role).permit(:role, :date_from, :date_to, :project_name, :notes,:user_work_experience_id,:role_summary)
     end
 end
