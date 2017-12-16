@@ -1,5 +1,11 @@
 class AdminController < ApplicationController
   def index
-    render layout: 'home'
+    render layout: 'admin'
   end
+  
+  def registered_users
+    @users = User.all
+  end
+  
+  
 end

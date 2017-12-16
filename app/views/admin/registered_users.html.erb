@@ -1,0 +1,58 @@
+<%content_for :content_page do%>
+    <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa  fa-users"></i>  Registered Users
+            <small class="pull-right"><b><%=Time.now%></b></small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- info row -->
+      
+      <!-- /.row -->
+
+      <!-- Table row -->
+      <div class="row">
+        <div class="col-xs-12 table-responsive">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Given Name</th>
+              <th>Family Name</th>
+              <th>email</th>
+              <th>City</th>
+              <th>Province</th>
+              <th>Admin</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+    			<%@users.each do |user|%>
+    				<td><%=user.given_name%></td>
+    				<td><%=user.family_name%></td>
+    				<td><%=user.email%></td>
+    				<td><%=user.city%></td>
+    				<td><%=user.province%></td>
+    				<td><%=user.admin%></td>
+    				<td>
+		                  <%=link_to root_path(user.id),class: "btn btn-primary btn-xs" do%>
+	                      		<i class="fa fa-edit"></i>
+	                      <%end%>	     					
+    				</td>
+    			<%end%>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      
+      <!-- /.row -->
+  	  
+      <!-- this row will not appear when printing -->
+    </section>
+<%end%>
