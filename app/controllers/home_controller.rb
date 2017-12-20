@@ -4,11 +4,14 @@ class HomeController < ApplicationController
   def index
     
      if params.has_key? :selected_user_id
+        puts "HAS PARAMETERS"
         selected_user_id = params[:selected_user_id]
      else
+        puts "HAS NO PARAMETERS"
         selected_user_id = current_user.id
      end
      
+     @user_profile = User.find_by_id(selected_user_id)
      @user_work_experience_position = ""
      @educaction_institution = ""
      @education_degree = ""

@@ -6,20 +6,20 @@
 		<div class="box-body box-profile">
 			<img class="profile-user-img img-responsive img-circle" src="/images/user_avatar.png" alt="User profile picture">
 
-			<h3 class="profile-username text-center"><%= "#{current_user.given_name} #{current_user.family_name}"%></h3>
+			<h3 class="profile-username text-center"><%= "#{@user_profile.given_name} #{@user_profile.family_name}"%></h3>
 
 			<p class="text-muted text-center">
 				<%= @user_work_experience_position%>
 			</p>
 			<ul class="list-group list-group-unbordered">
 				<li class="list-group-item">
-					<b>Email</b><a class="pull-right"><%= current_user.email%></a>
+					<b>Email</b><a class="pull-right"><%= @user_profile.email%></a>
 				</li>
 				<li class="list-group-item">
-					<b>Mobile</b><a class="pull-right"><%= current_user.mobile_phone%></a>
+					<b>Mobile</b><a class="pull-right"><%= @user_profile.mobile_phone%></a>
 				</li>
 				<li class="list-group-item">
-					<b>Home</b><a class="pull-right"><%= current_user.home_phone%></a>
+					<b>Home</b><a class="pull-right"><%= @user_profile.home_phone%></a>
 				</li>
 			</ul>
 			<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
@@ -54,10 +54,10 @@
 			<strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
 
 			<p class="text-muted">
-				<%= current_user.address%>
-				<%= current_user.city%>
-				<%= current_user.province%>
-				<%= current_user.country%>
+				<%= @user_profile.address%>
+				<%= @user_profile.city%>
+				<%= @user_profile.province%>
+				<%= @user_profile.country%>
 			</p>
 
 			<hr>
@@ -76,7 +76,7 @@
 
 			<strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
 			<p>
-				Last sign-in IP Address : <%= current_user.last_sign_in_ip%>
+				Last sign-in IP Address : <%= @user_profile.last_sign_in_ip%>
 
 			</p>
 		</div>

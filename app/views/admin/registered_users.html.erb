@@ -39,7 +39,7 @@
 	    				<td><%=user.province%></td>
 	    				<td><%=user.admin%></td>
 	    				<td>
-		                  <%=link_to root_path(user.id),class: "btn btn-primary btn-xs" do%>
+		                  <%=link_to root_path(selected_user_id: user.id),class: "btn btn-primary btn-xs" do%>
 	                      		<i class="fa fa-edit"></i>
 	                      <%end%>	     					
 	    				</td>						
