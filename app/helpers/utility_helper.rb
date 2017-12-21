@@ -29,6 +29,14 @@ module UtilityHelper
         end
       end  
   end
+  
+  def self.check_box(params_checked)
+    if params_checked
+      return "fa-check-square-o"
+    else
+      return "fa-square-o"
+    end
+  end
 
     
 end

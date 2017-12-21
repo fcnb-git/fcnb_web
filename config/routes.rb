@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # Root
     root "home#index"
   
@@ -22,6 +23,13 @@ Rails.application.routes.draw do
     resources :admin do
       collection do
         get 'registered_users', to: "admin#registered_users"        
+      end
+    end
+    
+    resources :resume do
+      collection do
+        get 'show_job_description/:user_work_experience_id',       to: "resume#show_job_description"
+        get 'show_skills_inventory/:user_work_experience_role_id', to: "resume#show_skills_inventory"
       end
     end
     

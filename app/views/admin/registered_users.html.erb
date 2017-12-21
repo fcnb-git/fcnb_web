@@ -8,13 +8,7 @@
             <small class="pull-right"><b><%=Time.now%></b></small>
           </h2>
         </div>
-        <!-- /.col -->
       </div>
-      <!-- info row -->
-      
-      <!-- /.row -->
-
-      <!-- Table row -->
       <div class="row">
         <div class="col-xs-12 table-responsive">
           <table class="table table-striped">
@@ -37,9 +31,11 @@
 	    				<td><%=user.email%></td>
 	    				<td><%=user.city%></td>
 	    				<td><%=user.province%></td>
-	    				<td><%=user.admin%></td>
 	    				<td>
-		                  <%=link_to root_path(selected_user_id: user.id),class: "btn btn-primary btn-xs" do%>
+	    					<i class="fa <%=UtilityHelper.check_box(user.admin)%>"></i>
+	    				</td>
+	    				<td>
+		                  <%=link_to resume_path(id: user.id),class: "btn btn-primary btn-xs" do%>
 	                      		<i class="fa fa-search"></i>
 	                      <%end%>	     					
 	    				</td>						
@@ -51,11 +47,5 @@
         </div>
         <!-- /.col -->
       </div>
-      <!-- /.row -->
-
-      
-      <!-- /.row -->
-  	  
-      <!-- this row will not appear when printing -->
     </section>
 <%end%>

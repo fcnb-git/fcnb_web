@@ -3,13 +3,7 @@ class HomeController < ApplicationController
   
   def index
     
-     if params.has_key? :selected_user_id
-        puts "HAS PARAMETERS"
-        selected_user_id = params[:selected_user_id]
-     else
-        puts "HAS NO PARAMETERS"
-        selected_user_id = current_user.id
-     end
+     selected_user_id = current_user.id
      
      @user_profile = User.find_by_id(selected_user_id)
      @user_work_experience_position = ""
@@ -17,8 +11,6 @@ class HomeController < ApplicationController
      @education_degree = ""
      @education_program = ""
      @education_specialization =""
-     
-     
      
      # User Work Experiences
        @user_work_experiences = UserWorkExperience.where(user_id: selected_user_id).order("date_to DESC") 
@@ -51,23 +43,5 @@ class HomeController < ApplicationController
           render layout: 'home'
        end        
   end
-  
-  def personal_information
-      render layout: 'home'
-  end
-  def education
-      render layout: 'home'
-  end  
-  def work_experiences
-      render layout: 'home'
-  end  
-
-  def certifications
-      render layout: 'home'
-  end    
-
-  def trainings
-      render layout: 'home'
-  end  
   
 end

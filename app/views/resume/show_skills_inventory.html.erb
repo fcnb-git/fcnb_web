@@ -1,0 +1,48 @@
+<%content_for :content_page do%>
+    <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa  fa-user"></i> <%=@user_work_experience.position%>
+            <small class="pull-right"><b><%=@user_work_experience.company_name%></b>&nbsp;&nbsp;(<%="#{@user_work_experience.date_from} - #{UtilityHelper.display_as_present_if_null(@user_work_experience.date_to)}"%>)</small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- info row -->
+      
+      <!-- /.row -->
+
+      <!-- Table row -->
+      <div class="row">
+        <div class="col-xs-12 table-responsive">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Category</th>
+              <th>Specific Skill</th>
+              <th>Last used</th>
+              <th>Exp(yrs)</th>
+              <th></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            	<%@skill_inventories.each do |skill_inventory|%>
+            		<%skill_inventory.user_work_skills.each do |work_skill|%>
+			            <tr>
+			              <td><%=skill_inventory.skill_category.description%></td>
+			              <td><%=skill_inventory.specific_skill%></td>
+			              <td><%=work_skill.last_time_used%></td>
+			              <td><%=UtilityHelper.years_experience(work_skill.total_experience)%></td>
+			            </tr>
+			        <%end%>     
+		        <%end%>    
+            </tbody>
+          </table>
+        </div>
+        <!-- /.col -->
+      </div>
+    </section>
+<%end%>
